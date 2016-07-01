@@ -50,6 +50,9 @@
 					ngt_qty = emptyValue;
 					date = emptyValue;
 					to_date = emptyValue;
+					des_name = emptyValue;
+				
+
 //el elemento service busca "ser_name" si lo encuentra lo almacena en otra variable
 					if (keys.indexOf("ser_name") != -1){
 						ser_name = service["ser_name"];
@@ -58,7 +61,7 @@
 					if (keys.indexOf("svt_id") != -1){
 						svt_id = service["svt_id"];
 						svt_id = parseFloat(svt_id);
-//cuando el elemento está vacío se muestra la variable sgte
+
 						if(isNaN(svt_id)){
 							svt_id=emptyValue;
 						}
@@ -68,9 +71,6 @@
 						ngt_qty = service["ngt_qty"];
 						ngt_qty = parseFloat(ngt_qty);
 
-						if(isNaN(ngt_qty)){
-							ngt_qty=emptyValue;
-						}
 					}
 
 					if (keys.indexOf("date") != -1){
@@ -87,8 +87,17 @@
 						ngt_qty= emptyValue
 					}
 
+					if (keys.indexOf("des_name") !=-1){
+						des_name= service["des_name"];
+					}
+
 					date = dateFormat(date, "dd mmm");
 
+//cuando el elemento está vacío se muestra la variable sgte
+
+					if(isNaN(service)){
+							service=emptyValue;
+						}
 //pintandolo en el html
 
 					template = "<tr>" +
@@ -97,8 +106,9 @@
 						"<td>" + ngt_qty + "</td>" + 
 						"<td>" + date + "</td>" + 
 						"<td>" + to_date + "</td>" +
+						"<td>" + des_name + "</td>" +
 						"</tr>";
-
+ 
 					$table.append(template); 
 				}
 			}
